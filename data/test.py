@@ -1,6 +1,5 @@
 import psycopg2
 
-
 def test_connection():
     """Test connection to the PostgreSQL database and execute a test query."""
     try:
@@ -17,11 +16,12 @@ def test_connection():
         cursor = conn.cursor()
 
         # Execute a test query
-        cursor.execute("SELECT * FROM laptops;")
+        cursor.execute("SELECT * FROM laptops WHERE rating IS NOT NULL ORDER BY rating DESC LIMIT 5;")
 
-        # Fetch and print the result of the query
-        db_version = cursor.fetchone()
-        print(f"PostgreSQL version: {db_version}")
+        # Fetch and print all rows from the result of the query
+        rows = cursor.fetchall()
+        for row in rows:
+            print(row)
 
         # Close the cursor and connection
         cursor.close()
@@ -29,7 +29,6 @@ def test_connection():
         print("🔒 Connection closed.")
     except psycopg2.Error as e:
         print(f"❌ Error connecting to database: {e}")
-
 
 if __name__ == '__main__':
     test_connection()

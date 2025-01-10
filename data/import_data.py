@@ -1,5 +1,6 @@
 import psycopg2
-from psycopg2 import sql
+import pandas as pd
+from sqlalchemy import create_engine
 
 def create_connection():
     """Create a database connection to the PostgreSQL database."""
@@ -23,17 +24,17 @@ def create_table(conn):
     CREATE TABLE IF NOT EXISTS laptops (
         id SERIAL PRIMARY KEY,
         name TEXT,
-        price TEXT,
+        price INTEGER,
         ram INTEGER,
         rom_type TEXT,
         rom INTEGER,
-        screen_size REAL,
+        screen_size FLOAT,
         screen_detail TEXT,
         cpu TEXT,
         gpu TEXT,
         battery TEXT,
-        weight REAL,
-        rating REAL,
+        weight FLOAT,
+        rating FLOAT,
         links_href TEXT,
         brand TEXT,
         series TEXT,
@@ -51,10 +52,27 @@ def create_table(conn):
     finally:
         cursor.close()
 
+def import_data(file_path, conn):
+    """Import data from path into the laptops table."""
+    try:
+        # Read the CSV file
+        df = pd.read_excel(file_path)
+        print("✅ CSV file read successfully.")
+
+        # Create SQLAlchemy engine
+        engine = create_engine('postgresql+psycopg2://postgres:postgres@localhost:5432/postgres')
+
+        # Insert data into the laptops table
+        df.to_sql('laptops', engine, if_exists='append', index=False)
+        print("✅ Data imported successfully.")
+    except Exception as e:
+        print(f"❌ Error importing data: {e}")
+
 def main():
     conn = create_connection()
     if conn is not None:
         create_table(conn)
+        import_data('laptop_all.xlsx', conn)
         conn.close()
         print("🔒 Connection closed.")
     else:
