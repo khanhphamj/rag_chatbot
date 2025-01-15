@@ -16,7 +16,7 @@ def test_connection():
         cursor = conn.cursor()
 
         # Execute a test query
-        cursor.execute("SELECT * FROM laptops WHERE rating IS NOT NULL ORDER BY rating DESC LIMIT 5;")
+        cursor.execute("SELECT * FROM laptops")
 
         # Fetch and print all rows from the result of the query
         rows = cursor.fetchall()
