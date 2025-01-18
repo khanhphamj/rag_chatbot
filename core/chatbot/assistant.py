@@ -126,7 +126,7 @@ def handle_query(user_input: str) -> str:
 
 if __name__ == "__main__":
     # Interactive REPL loop for testing
-    print("Xin chào! Tôi là Xám, tôi có thể giúp gì cho bạn hôm nay?")
+    print("Xin chào! Tôi là Xám, trợ lý ảo của Thế Giới Di Động, chuyên tư vấn về sản phẩm laptop. Tôi có thể giúp gì cho bạn hôm nay?")
     while True:
         user_input = input("Bạn: ")
         if user_input.lower() in ["thoát", "exit", "quit", "q"]:
