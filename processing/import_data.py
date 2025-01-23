@@ -39,7 +39,8 @@ def create_table(conn):
         brand TEXT,
         series TEXT,
         is_laptopai BOOLEAN,
-        is_laptopgaming BOOLEAN
+        is_laptopgaming BOOLEAN,
+        description TEXT
     );
     """
     try:
@@ -63,7 +64,7 @@ def import_data(file_path, conn):
         engine = create_engine('postgresql+psycopg2://postgres:postgres@localhost:5432/postgres')
 
         # Insert data into the laptops table
-        df.to_sql('laptops', engine, if_exists='append', index=False)
+        df.to_sql('laptops', engine, if_exists='replace', index=False)
         print("✅ Data imported successfully.")
     except Exception as e:
         print(f"❌ Error importing data: {e}")
@@ -72,7 +73,7 @@ def main():
     conn = create_connection()
     if conn is not None:
         create_table(conn)
-        import_data('laptop_all.xlsx', conn)
+        import_data('../data/laptop_with_descriptions.xlsx', conn)
         conn.close()
         print("🔒 Connection closed.")
     else:
