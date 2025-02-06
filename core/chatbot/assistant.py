@@ -23,7 +23,7 @@ db_tools = [list_tables, describe_table, query_sample]
 
 # Initialize the generative model with tools and instructions
 model = genai.GenerativeModel(
-    "models/gemini-1.5-flash-latest",
+    "models/gemini-2.0-flash-latest",
     tools=db_tools,
     system_instruction=INSTRUCTION
 )
