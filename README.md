@@ -121,4 +121,4 @@ For questions or feedback, please reach out to the project maintainers: phukhanh
 
 ## Video Demo 🎥
 
-![](C:\Users\PC\Downloads\Demo Chatbot.mp4)
+https://github.com/user-attachments/assets/de15a1d6-67df-44e1-9ef6-c6cd6c55d67a
