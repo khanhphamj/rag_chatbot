@@ -63,7 +63,7 @@ Follow these steps to set up the project on your local machine:
    ```bash
    poetry init
    ```
-3.** Install Dependencies:**  
+3. **Install Dependencies:**  
     Install the required dependencies for the project.
    ```bash
    poetry install
@@ -117,4 +117,8 @@ Customization Options
 
 ## Contact 📧
 
-For questions or feedback, please reach out to the project maintainers:phukhanh1903@gmail.com
+For questions or feedback, please reach out to the project maintainers: phukhanh1903@gmail.com
+
+## Video Demo 🎥
+
+![](C:\Users\PC\Downloads\Demo Chatbot.mp4)
